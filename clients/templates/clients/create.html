@@ -1,0 +1,179 @@
+{% extends 'backend/base-admin.html' %}
+{% load static %}
+
+
+{% block css %}
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Clientes</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Clientes</a></li>
+          <li class="breadcrumb-item active">Crear Clientes</li>
+        </ol>
+
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+    <hr>
+  </div><!-- /.container-fluid -->
+</div>
+
+
+
+  <!-- Main content -->
+  <!-- Content Wrapper. Contains page content
+
+  {{ form.username.label_tag }}
+  {{ form.username }}
+
+-->
+
+    <!-- Main content -->
+    <section class="content">
+
+      <section class="cliente crear">
+    <div class="container-fluid">
+
+        <form method="POST">
+
+          {% csrf_token %}
+
+
+            <fieldset>
+                <legend>Datos personales:</legend>
+                <div class="row">
+                    <div class="col-md-2 text-center">
+
+                        <label class="label" data-toggle="tooltip" title="Agregar foto">
+                            <img id="imgAvatar" src="../media/img/no_image.jpg" alt="avatar" width="190px">
+                            <input type="file" class="sr-only" id="inputImgAvatar" accept="image/*">
+                        </label>
+                        <input type="hidden" name="fileAvatarBase64" id="fileAvatarBase64" />
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-5">
+
+                                <label class="control-label" for="Nombres">Nombres</label> <span class="text-danger field-validation-valid" data-valmsg-for="Nombres" data-valmsg-replace="true"></span>
+                                {{ form.name }}
+                                <!-- IDEA: <input class="form-control" required type="text" data-val="true" data-val-length="The field Nombres must be a string with a maximum length of 60." data-val-length-max="60" data-val-required="The Nombres field is required." id="Nombres" name="Nombres" value="" /> -->
+                            </div>
+                            <div class="col-md-4 col-lg-5">
+                                <label class="control-label" for="Apellidos">Apellidos</label> <span class="text-danger field-validation-valid" data-valmsg-for="Apellidos" data-valmsg-replace="true"></span>
+                                {{ form.surname }}
+                            </div>
+                            <div class="col-md-4 col-lg-2">
+
+                                <label class="control-label" for="Sexo">Sexo</label> <span class="text-danger field-validation-valid" data-valmsg-for="Sexo" data-valmsg-replace="true"></span>
+                                {{ form.male_female }}
+                                <!-- IDEA: <select class="form-control" data-val="true" data-val-maxlength="The field Sexo must be a string or array type with a maximum length of &#x27;2&#x27;." data-val-maxlength-max="2" data-val-required="The Sexo field is required." id="Sexo" name="Sexo"><option value="F">Femenino</option>
+<option value="M">Masculino</option>
+</select> -->
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-md-4 col-lg-2">
+                                <label class="control-label" for="Cedula">Documento Unico</label> <span class="text-danger field-validation-valid" data-valmsg-for="Cedula" data-valmsg-replace="true"></span>
+                                {{ form.document }}
+                            </div>
+                            <div class="col-12 col-md-4 col-lg-2">
+                                <label class="control-label" for="Cedula">CUIL</label> <span class="text-danger field-validation-valid" data-valmsg-for="Cedula" data-valmsg-replace="true"></span>
+                                {{ form.cuil }}
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <label class="control-label" for="FechaNacimiento">Fecha Nacimiento</label> <span class="text-danger field-validation-valid" data-valmsg-for="FechaNacimiento" data-valmsg-replace="true"></span>
+                                {{ form.birthday }}
+                                <!--<input class="form-control" type="date" id="FechaNacimiento" name="FechaNacimiento" value="" />-->
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2">
+                                <label class="control-label" for="Celular">Celular</label> <span class="text-danger field-validation-valid" data-valmsg-for="Celular" data-valmsg-replace="true"></span>
+                                {{ form.mobile }}
+                                <!-- IDEA:  <input type="tel" class="form-control" data-val="true" data-val-length="The field Celular must be a string with a maximum length of 20." data-val-length-max="20" data-val-phone="The Celular field is not a valid phone number." id="Celular" name="Celular" value="" />-->
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2">
+                                <label class="control-label" for="Telefono">Telef&#xF3;no</label> <span class="text-danger field-validation-valid" data-valmsg-for="Telefono" data-valmsg-replace="true"></span>
+                                {{ form.phone }}
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <label class="control-label" for="Nacionalidad">Nacionalidad</label> <span class="text-danger field-validation-valid" data-valmsg-for="Nacionalidad" data-valmsg-replace="true"></span>
+                                {{ form.nationality }}
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-5">
+                                <label class="control-label" for="Direccion">Direccion completa</label> <span class="text-danger field-validation-valid" data-valmsg-for="Direccion" data-valmsg-replace="true"></span>
+                                {{ form.home }}
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <label class="control-label" for="Direccion">Localidad</label> <span class="text-danger field-validation-valid" data-valmsg-for="Direccion" data-valmsg-replace="true"></span>
+                                {{ form.locality }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+
+                    <div class="col-sm-4 col-lg-1">
+                        <label class="control-label" for="CodigoPostal">CP</label> <span class="text-danger field-validation-valid" data-valmsg-for="CodigoPostal" data-valmsg-replace="true"></span>
+                        {{ form.postal_code }}
+                    </div>
+
+                    <div class="col-6 col-sm-4 col-lg-2">
+                        <label class="control-label" for="Dependientes">Provincia</label>
+                        {{ form.province }}
+                    </div>
+                    <div class="col-6 col-sm-4 col-lg-4">
+                        <label class="control-label" for="Dependientes">Lugar de trabajo</label>
+                        {{ form.work }}
+                    </div>
+                    <div class="col-6 col-sm-4 col-lg-4">
+                        <label class="control-label" for="Dependientes">Direccion de trabajo</label>
+                        {{ form.work_address }}
+                    </div>
+                    <div class="col-6 col-sm-4 col-lg-3">
+                        <label class="control-label" for="Email">E-mail</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <label class="control-label" for="TrabajoIngreso">Ingresos</label> <span class="text-danger field-validation-valid" data-valmsg-for="TrabajoIngreso" data-valmsg-replace="true"></span>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+
+                                {{ form.ingresos }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </fieldset>
+
+            <button class="btn btn-primary" type="submit">Crear Cliente</button>
+    </form>
+
+    </div>
+</section>
+
+
+
+
+
+    </section>
+    <!-- /.content -->
+
+  <!-- /.content-wrapper -->
+
+
+{% endblock %}

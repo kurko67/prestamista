@@ -1,0 +1,165 @@
+{% extends 'backend/base-admin.html' %}
+{% load static %}
+
+
+{% block css %}
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<!-- IDEA:  <h4 class="text-center">  {{ message }} </h4>-->
+
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Clientes</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Clientes</a></li>
+          <li class="breadcrumb-item active">Listado de clientes</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+
+
+
+  <!-- Main content -->
+  <!-- Content Wrapper. Contains page content -->
+
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">
+
+
+              {% include 'clients/snippets/search.html' with query=query %}
+              <br>
+              Resultados para: {{ query }}  ( {{ count }} ) Registros
+
+
+          </h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fas fa-minus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+              <i class="fas fa-times"></i></button>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped projects">
+              <thead>
+                  <tr>
+                      <th>
+                          ID
+                      </th>
+                      <th>
+                          DNI
+                      </th>
+                      <th >
+                          Nombre y apellido
+                      </th>
+                      <th>
+                          Localidad
+                      </th>
+                      <th>
+                          Celular
+                      </th>
+                      <th>
+                          Trabajo
+                      </th>
+
+                  </tr>
+              </thead>
+              <tbody>
+
+                {% for clients in object_list %}
+
+                  <tr>
+                      <td>
+                          {{ clients.id }}
+                      </td>
+                      <td>
+                          {{ clients.document }}
+                      </td>
+                      <td>
+                          {{ clients.name  }} {{ clients.surname  }}
+                      </td>
+                      <td>
+                          {{ clients.locality }}
+                      </td>
+                      <td>
+                        {{ clients.mobile }}
+                      </td>
+                      <td>
+                          {{ clients.work }}
+                      </td>
+                      <td class="project-actions text-right">
+                          <a class="btn btn-primary btn-sm" href="{% url 'clients:view' clients.id %}">
+                              <i class="fas fa-folder">
+                              </i>
+                              View
+                          </a>
+                          <a class="btn btn-info btn-sm" href="{% url 'clients:edit' clients.id %}">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Edit
+                          </a>
+                          <a class="btn btn-info btn-sm" href="{% url 'loans:loans_list' clients.id %}">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Creditos
+                          </a>
+
+                      </td>
+                  </tr>
+
+
+                  {% endfor %}
+
+
+
+
+              </tbody>
+          </table>
+
+
+
+        </div>
+
+
+      </div>
+
+  <div id="container-floating">
+    <a href="{% url 'clients:create' %}">
+        <div id="floating-button" data-toggle="tooltip" data-placement="left" title="Agregar Cliente">
+            <div>
+                <i class="fas fa-plus-circle fa-4x" size: 5x></i>
+            </div>
+        </div>
+    </a>
+  </div>
+
+      <!-- /.card -->
+
+    </section>
+
+
+
+    <!-- /.content -->
+
+  <!-- /.content-wrapper -->
+
+
+{% endblock %}

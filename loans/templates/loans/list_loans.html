@@ -1,0 +1,158 @@
+{% extends 'backend/base-admin.html' %}
+{% load static %}
+
+
+{% block css %}
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<!-- IDEA:  <h4 class="text-center">  {{ message }} </h4>-->
+
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Creditos</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Creditos</a></li>
+          <li class="breadcrumb-item active">Listado de creditos</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+
+
+
+  <!-- Main content -->
+  <!-- Content Wrapper. Contains page content -->
+
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fas fa-minus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+              <i class="fas fa-times"></i></button>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped projects">
+              <thead>
+                  <tr>
+                      <th>
+                          ID
+                      </th>
+                      <th>
+                          FECHA DE INICIO
+                      </th>
+                      <th>
+                          MONTO PRESTADO
+                      </th>
+                      <th >
+                          PLAN
+                      </th>
+                      <th>
+                          MONTO DE CUOTA
+                      </th>
+                      <th>
+                          FORMA DE PAGO
+                      </th>
+                      <th>
+                          ESTADO
+                      </th>
+
+                  </tr>
+              </thead>
+              <tbody>
+
+                    {% for loans in object_list %}
+
+                  <tr>
+                    <td>
+                        {{ loans.id }}
+                    </td>
+                      <td>
+                          {{ loans.created_at }}
+                      </td>
+                      <td>
+                          {{ loans.money }}
+                      </td>
+                      <td>
+                          {{ loans.plan  }}
+                      </td>
+                      <td>
+                          {{ loans.fee_amount }}
+                      </td>
+                      <td>
+                        {{ loans.payment_method }}
+                      </td>
+                      <td>
+                          {{ loans.status }}
+                      </td>
+                      <td class="project-actions text-right">
+                          <a class="btn btn-primary btn-sm" href="{% url 'clients:view' clients.id %}">
+                              <i class="fas fa-folder">
+                              </i>
+                              Ver cuotas
+                          </a>
+                          <a class="btn btn-info btn-sm" href="{% url 'clients:edit' clients.id %}">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Exportar movimientos
+                          </a>
+
+                      </td>
+                  </tr>
+
+
+
+
+                    {% endfor %}
+
+
+              </tbody>
+          </table>
+
+
+
+        </div>
+
+
+      </div>
+
+  <div id="container-floating">
+    <a href="{% url 'clients:create' %}">
+        <div id="floating-button" data-toggle="tooltip" data-placement="left" title="Agregar Credito">
+            <div>
+                <i class="fas fa-plus-circle fa-4x" size: 5x></i>
+            </div>
+        </div>
+    </a>
+  </div>
+
+      <!-- /.card -->
+
+    </section>
+
+
+
+    <!-- /.content -->
+
+  <!-- /.content-wrapper -->
+
+
+{% endblock %}

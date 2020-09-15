@@ -1,0 +1,122 @@
+{% extends 'backend/base-admin.html' %}
+{% load static %}
+
+
+{% block css %}
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Clientes</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Clientes</a></li>
+          <li class="breadcrumb-item active">Detalle de Clientes</li>
+        </ol>
+
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+    <hr>
+  </div><!-- /.container-fluid -->
+</div>
+
+
+
+  <!-- Main content -->
+  <!-- Content Wrapper. Contains page content
+
+  {{ form.username.label_tag }}
+  {{ form.username }}
+
+-->
+
+    <!-- Main content -->
+    <section class="content">
+
+      <section class="cliente crear">
+        <div class="container-fluid">
+
+
+
+
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Vista de clientes</h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <form role="form">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Nombre y apellido</label>
+            <input type="text" class="form-control" id="nombre" value="{{ object.name }}  {{ object.surname }}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">DOCUMENTO</label>
+            <input type="text" class="form-control" id="documento" value="{{ object.document }}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">CUIL</label>
+            <input type="text" class="form-control" id="cuil" value="{{ object.cuil }}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
+            <input type="text" class="form-control" id="cuil" value="{{ object.birthday }}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">CELULAR</label>
+            <input type="text" class="form-control" id="cuil" value="{{ object.mobile }}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">TELEFONO FIJO</label>
+            <input type="text" class="form-control" id="cuil" value="{{ object.phone }}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">DOMICILIO PERSONAL</label>
+            <input type="text" class="form-control" id="cuil" value="{{ object.home }} LOCALIDAD: {{ object.locality }} CP: {{ object.postal_code }}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">LUGAR Y DOMICILIO LABORAL</label>
+            <input type="text" class="form-control" id="cuil" value="{{ object.work }}, DOMICILIO: {{ object.work_address }} " readonly>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">CORREO ELECTRONICO</label>
+            <input type="mail" class="form-control" id="cuil" value="{{ object.email }}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">INGRESOS</label>
+            <input type="text" class="form-control" id="cuil" value="{{ object.ingresos }}" readonly>
+          </div>
+
+        <!-- /.card-body -->
+
+        <div class="card-footer">
+            <a href="{% url 'clients:client_list' %}" class="btn btn-primary">Volver</a>
+            <a href="{% url 'loans:loans_list' %}" class="btn btn-secondary">Ver creditos</a>
+            <a href="#" class="btn btn-info">Cobrar una cuota</a>
+        </div>
+      </form>
+    </div>
+
+
+</section>
+
+
+
+
+
+    </section>
+    <!-- /.content -->
+
+  <!-- /.content-wrapper -->
+
+
+{% endblock %}

@@ -1,24 +1,11 @@
-{% load static %}
+ {% load static %}
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
 <head>
-	<title>MAXI KIOSKO</title>
+	<title>ALIANZA FINANCIERA - Servicios financieros</title>
+
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-	<!--:  
-
-	{% if stripe_public_key %}
-
-		<meta name="stripe_public_key" content="{{ stripe_public_key }}">
-
-	{% endif %}
-
-	-->
-
-
-	{% block css %}
-	{% endblock %}
 
 </head>
 <body>
@@ -29,16 +16,13 @@
 
 		{% include 'messages.html' %}
 
-		{% block breadcrumb %}
 
-		{% endblock %}
 
 		<div class="row mt-3">
 
 			{% block content %}
 
 			{% endblock %}
-
 
 
 		</div>

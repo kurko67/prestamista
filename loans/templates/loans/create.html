@@ -1,0 +1,147 @@
+{% extends 'backend/base-admin.html' %}
+{% load static %}
+
+
+{% block css %}
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Creditos</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Creditos</a></li>
+          <li class="breadcrumb-item active">Crear Creditos</li>
+        </ol>
+
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+    <hr>
+  </div><!-- /.container-fluid -->
+</div>
+
+
+
+  <!-- Main content -->
+  <!-- Content Wrapper. Contains page content
+
+  {{ form.username.label_tag }}
+  {{ form.username }}
+
+-->
+
+    <!-- Main content -->
+    <section class="content">
+
+      <section class="cliente crear">
+    <div class="container-fluid">
+
+        <form method="POST">
+
+          {% csrf_token %}
+
+
+            <fieldset>
+                <legend>Nuevo prestamo</legend>
+                <div class="row">
+                <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-5">
+
+                                <label class="control-label" for="Nombres">Cliente</label> <span class="text-danger field-validation-valid" data-valmsg-for="Nombres" data-valmsg-replace="true"></span>
+                                {{ form.client }}
+                                <!-- IDEA: <input class="form-control" required type="text" data-val="true" data-val-length="The field Nombres must be a string with a maximum length of 60." data-val-length-max="60" data-val-required="The Nombres field is required." id="Nombres" name="Nombres" value="" /> -->
+                            </div>
+                            <div class="col-md-4 col-lg-5">
+                                <label class="control-label" for="Apellidos">Usuario</label> <span class="text-danger field-validation-valid" data-valmsg-for="Apellidos" data-valmsg-replace="true"></span>
+                                {{ form.user }}
+                            </div>
+                            <div class="col-md-4 col-lg-2">
+
+                                <label class="control-label" for="Sexo">Monto a prestar</label> <span class="text-danger field-validation-valid" data-valmsg-for="Sexo" data-valmsg-replace="true"></span>
+                                {{ form.money }}
+                                <!-- IDEA: <select class="form-control" data-val="true" data-val-maxlength="The field Sexo must be a string or array type with a maximum length of &#x27;2&#x27;." data-val-maxlength-max="2" data-val-required="The Sexo field is required." id="Sexo" name="Sexo"><option value="F">Femenino</option>
+<option value="M">Masculino</option>
+</select> -->
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-md-4 col-lg-2">
+                                <label class="control-label" for="Cedula">Cantidad de cuotas</label> <span class="text-danger field-validation-valid" data-valmsg-for="Cedula" data-valmsg-replace="true"></span>
+                                {{ form.plan }}
+                            </div>
+                            <div class="col-12 col-md-4 col-lg-2">
+                                <label class="control-label" for="Cedula">Monto de cuotas</label> <span class="text-danger field-validation-valid" data-valmsg-for="Cedula" data-valmsg-replace="true"></span>
+                                {{ form.fee_amount }}
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <label class="control-label" for="FechaNacimiento">Total Credito</label> <span class="text-danger field-validation-valid" data-valmsg-for="FechaNacimiento" data-valmsg-replace="true"></span>
+                                {{ form.produced }}
+                                <!--<input class="form-control" type="date" id="FechaNacimiento" name="FechaNacimiento" value="" />-->
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2">
+                                <label class="control-label" for="Celular">Vendedor</label> <span class="text-danger field-validation-valid" data-valmsg-for="Celular" data-valmsg-replace="true"></span>
+                                {{ form.seller }}
+                                <!-- IDEA:  <input type="tel" class="form-control" data-val="true" data-val-length="The field Celular must be a string with a maximum length of 20." data-val-length-max="20" data-val-phone="The Celular field is not a valid phone number." id="Celular" name="Celular" value="" />-->
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-2">
+                                <label class="control-label" for="Telefono">Comision</label> <span class="text-danger field-validation-valid" data-valmsg-for="Telefono" data-valmsg-replace="true"></span>
+                                {{ form.commission }}
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <label class="control-label" for="Nacionalidad">Fecha de pago comision</label> <span class="text-danger field-validation-valid" data-valmsg-for="Nacionalidad" data-valmsg-replace="true"></span>
+                                {{ form.commission_payment }}
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-5">
+                                <label class="control-label" for="Direccion">Forma de pago</label> <span class="text-danger field-validation-valid" data-valmsg-for="Direccion" data-valmsg-replace="true"></span>
+                                {{ form.payment_method }}
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <label class="control-label" for="Direccion">Estado Credito</label> <span class="text-danger field-validation-valid" data-valmsg-for="Direccion" data-valmsg-replace="true"></span>
+                                {{ form.status }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+
+                    <div class="col-sm-4 col-lg-1">
+                        <label class="control-label" for="CodigoPostal">Observaciones</label> <span class="text-danger field-validation-valid" data-valmsg-for="CodigoPostal" data-valmsg-replace="true"></span>
+                        {{ form.observations }}
+                    </div>
+
+                    <div class="col-6 col-sm-4 col-lg-2">
+                        <label class="control-label" for="Dependientes">Fecha de finalizacion</label>
+                        {{ form.ending }}
+                    </div>
+                    
+                </div>
+            </fieldset>
+
+            <button class="btn btn-primary" type="submit">Crear Cliente</button>
+    </form>
+
+    </div>
+</section>
+
+
+
+
+
+    </section>
+    <!-- /.content -->
+
+  <!-- /.content-wrapper -->
+
+
+{% endblock %}

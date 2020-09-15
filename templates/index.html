@@ -1,77 +1,75 @@
-{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="title" content="Nelam servicios financieros para empleados publicos de la Provincia de Mendoza">
+    <meta name="description" content="Prestamos a emplados publicos concursados y/o quebrados">
+    <title>Financiera Nelam</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/nelam.css' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+
+
+  </head>
+  <body>
+
+    <div class="container" >
+
+        <div class="primerMenu">
+
+              Abierto : Lun - Jue : 14 a 18 hs
+
+        </div>
+
+        <div class="SegundoMenu">
+
+
+            <span><img src="{% static 'images/logo.png' %}" alt="Nelam Servicios financieros"></span>
+
+            <span class="WhatsApp">CAJA 1</span>
+          
 
 
 
 
-{% block content %}
+        </div>
+
+        <div class="MenuPrincipal">
+
+          <nav>
+
+              <ul id="Menu">
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">EMPRESA</a></li>
+                <li><a href="#">PRESTAMOS</a></li>
+                <li><a href="#">CONTACTO</a></li>
+              </ul>
 
 
-			<div class="col">
+          </nav>
 
-				<h4 class="text-center">  {{ message }} </h4>
+        </div>
 
-				{% include 'products/snippets/search.html' %}
+        <div class="Contenido">
 
-				<div class="mt-2">
-
-					{% if is_paginated %}
-
-
-					 <ul class="pagination">
-
-						 {% if page_obj.has_previous %}
-
-						 <li class="page-item">
-								<a href="?page={{ page_obj.previous_page_number }}" class="page-link">Previous</a>
-						</li>
-
-						  {% endif %}
-
-							{% for i in paginator.page_range %}
-
-
-							{% if page_obj.number == i %}
-
-						  <li class="page-item active">
-								<a href="?page={{ i }}" class="page-link">{{ i }}</a>
-							</li>
-
-							{% else %}
-
-							<li class="page-item">
-								<a href="?page={{ i }}" class="page-link">{{ i }}</a>
-							</li>
-
-							{% endif %}
-
-							{% endfor %}
-
-							 {% if page_obj.has_next %}
-
-						 <li class="page-item">
-							 <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next</a>
-						 </li>
-
-						 	{% endif %}
-
-					 </ul>
-
-					{% endif %}
-
-				</div>
-
-
-				{% include 'products/snippets/list.html' %}
+            <div class="Slogan">
+              PRESTAMOS EN EL ACTO Y A SOLA FIRMA!
+            </div>
+            <br>
+            <div class="botonPrincipal">
+              <a href="#">Solicitar credito</a>
+            </div>
 
 
 
 
+        </div>
 
-			</div>
-
-
-
+    </div>
 
 
 
-{% endblock %}
+  </body>
+</html>
